@@ -5,51 +5,26 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'Rigellute/rigel'
-Plug 'scrooloose/nerdtree'
 Plug 'pangloss/vim-javascript'
 call plug#end()
 " ____________________________________________________________________________________________________________________ COLORSCHEME
 set t_Co=256
 set termguicolors
-set background=dark
-let ayucolor="dark" " mirage/light
-let g:gruvbox_contrast_dark='hard' " soft/light
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
-color rigel
+color srcery
 " ____________________________________________________________________________________________________________________ EMMET
 let g:user_emmet_mode='a' " enable emmet in all modes
 let g:user_emmet_expandabbr_key='<c-space>'
-" ____________________________________________________________________________________________________________________ NERD-TREE
-nnoremap <leader>o :NERDTreeToggle<cr>
-" necessary for autocmd's
-au StdinReadPre * let s:std_in=1
-" open nerdtree automatically when vim starts up if no files were specified
-au VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-" auto quit vim if nerdtree is only buffer
-au bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" open nerdtree automatically when vim starts up on opening a directory
-au VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
-" ignore these files
-let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-let NERDTreeHijackNetrw           = 1
-let NERDTreeMouseMode             = 2
-let NERDTreeKeepTreeInNewTab      = 1
-let g:nerdtree_tabs_open_on_gui_startup = 1
-let NERDTreeQuitOnOpen            = 0
-let NERDTreeChDirMode             = 0
-let g:NERDTreeMinimalUI           = 1
-let g:NERDTreeWinSize             = 25
-let g:NERDTreeDirArrows           = 0
-let g:NERDTreeDirArrowExpandable  = ' •'
-let g:NERDTreeDirArrowCollapsible = ' ⚬'
-let g:NERDTreeStatusline          = " "
-let NERDTreeShowHidden            = 1
-let NERDTreeMapOpenInTab          = "<ENTER>"
+" ____________________________________________________________________________________________________________________ NETRW
+let g:netrw_banner=0
+let g:netrw_winsize=13
+let g:netrw_liststyle=3
+let g:netrw_localrmdir='rm -r'
+
+" toggle netrw on the left side of the editor
+nnoremap <leader>n :Lexplore<CR>
 " ____________________________________________________________________________________________________________________ NICE TO HAVE
-set cursorline
 set noerrorbells " disable error bells
 set omnifunc=syntaxcomplete#Complete " css autocomplete.
 set nu rnu
@@ -65,7 +40,7 @@ set wildmode=longest,list,full " enable autocompletion.
 set smartcase " Automatically switch search to case-sensitive when search query contains an uppercase letter.
 set ignorecase " Ignore case when highlighting.
 set inccommand=nosplit " shows the effects of a command as you type
-set lazyredraw " Don’t update screen during macro and script execution. (for performance)
+set lazyredraw " Do not update screen during macro and script execution. (for performance)
 set scrolloff=0 " The number of screen lines to keep above and below the cursor.
 set sidescrolloff=0 " The number of screen columns to keep to the left and right of the cursor.
 set viminfo="NONE"
@@ -82,10 +57,6 @@ set splitbelow splitright
 " ____________________________________________________________________________________________________________________ SHORTCUTS
 map <space> <leader>
 nnoremap r <c-r>
-
-" copy or paste from X11 clipboard
-vmap <leader>y :!xclip -f -sel clip<CR>
-map <leader>p mz:-1r !xclip -o -sel clip<CR>
 
 " use system clipboard
 set clipboard=unnamedplus
@@ -104,13 +75,10 @@ nnoremap <c-p> ciw<c-r>0<esc>
 " search term in select mode
 vnoremap / y/<C-R>"<C-R>
 
-" open file in browser
-nmap <silent> <leader>xo :!xdg-open %<cr>
-
 " toggle highlight search
 nnoremap <silent> <leader>/ :set hlsearch!<CR>
 
-" spell-check for english
+" spell-check for English
 nnoremap <leader>c :setlocal spell! spelllang=en_us<CR>
 " ____________________________________________________________________________________________________________________ WRITE | QUIT
 nmap <leader>w :w!<cr>
@@ -124,12 +92,6 @@ nmap <leader>aq :qa!<cr>
 " :W sudo saves the file (useful for handling the permission-denied error)
 :command! W w !sudo tee % > /dev/null
 " ________________________________________________________________________________________________________________________ TABS
-map <silent> <leader>tn :tabnew<cr>
-map <silent> <leader>to :tabonly<cr>
-map <silent> <leader>tc :tabclose<cr>
-map <silent> <leader>tm :tabmove
-" look at options for tabmove
-
 let g:lasttab = 1 " Let 'tl' toggle between this and the last accessed tab
 nmap <silent> <Leader>tl :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
@@ -139,7 +101,7 @@ au TabLeave * let g:lasttab = tabpagenr()
 map <silent> <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 " ______________________________________________________________________________________________________________________ BUFFERS
 " go to the next/prev buffer in the buffer list
-map <silent> <leader>n :bnext<cr>
+" map <silent> <leader>n :bnext<cr>
 map <silent> <leader>N :bprevious<cr>
 
 " Close the current buffer
@@ -208,20 +170,4 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 " ____________________________________________________________________________________________________________________ SOME TRICKS
 au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o " disable auto comment
 au BufWritePre * %s/\s\+$//e " auto delete trailing whitespace on save
-au BufNewFile,BufRead ~/.config/i3/config set filetype=i3config " colored i3 config
 au BufEnter * if &ft ==# 'help' | wincmd L | endif " open help pages in vertical split
-" ___________________________________________________________________________________________________________________ AUTOCOMPLETION
-" 'longest' inserts the longest common text of all matches
-set completeopt=longest,menuone,preview " 'menuone' does menu will come up even if there's only one match
-
-" Enter key will simply select the highlighted menu item
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" keeps items highlighted. You can keep typing and nearest match will be selected so you can hit Enter any time to insert
-inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
-  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-
-" it simulates <C-X><C-O> to bring up omni completion menu, then simulates <C-N><C-P> to remove the longest common text
-inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
-  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-" and simulates <Down> again to keep a match highlighted.

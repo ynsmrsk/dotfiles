@@ -1,5 +1,7 @@
 set $mod Mod4
 
+border_radius 10
+
 # font
 font pango:Quicksand 10
 
@@ -187,14 +189,14 @@ bindsym $mod+m bar mode toggle
 
 exec --no-startup-id volumeicon
 exec --no-startup-id i3-msg 'exec /usr/bin/pulseaudio --start'
-exec_always --no-startup-id feh --bg-scale ~/Pictures/pesmerge.jpg
+exec_always --no-startup-id feh --bg-scale ~/Pictures/arch.jpeg
 exec --no-startup-id nm-applet
 exec --no-startup-id compton -b
 
 # gaps only be used if there is more than one container on the workspace
-smart_gaps on
-gaps inner 0
-gaps outer 0
+# smart_gaps on
+gaps inner 10
+gaps outer 10
 bindsym $mod+i gaps inner current plus 5
 bindsym $mod+o gaps inner current minus 5
 

@@ -1,0 +1,20 @@
+let barposition = "bottom"
+set nosmoothscroll
+set noautofocus
+let mapleader = ";"
+map h goBack
+map l goForward
+map H scrollLeft
+map L scrollRight
+map s previousTab
+map d nextTab
+map <Leader>s :settings
+map t :tabnew<Space>duckduckgo<Space>
+map <Leader>t :tabnew<Space>
+map <Leader>yy :tabnew<Space>youtube<Space>
+map <Leader>yW :tabnew<Space>https://www.youtube.com/playlist?list=PLR07LzxpzLzilamSsBG0_jQzMHB804c5G<Space>
+map <Leader>yw :tabnew<Space>https://www.youtube.com/playlist?list=WL<Space>
+map <Leader>yl :tabnew<Space>https://www.youtube.com/playlist?list=PLR07LzxpzLzjNKwVUuHhQRbB-Oi0y_yry<Space>
+map <Leader>yd :tabnew<Space>https://www.youtube.com/playlist?list=PLR07LzxpzLziHuLEv_EfuwTTk-M8bD47R<Space>
+map <Leader>r :tabnew<Space>duckduckgo<Space>reddit.com<Space>
+map <Leader>g :tabnew<Space>duckduckgo<Space>github.com<Space>

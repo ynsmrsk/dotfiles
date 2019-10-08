@@ -18,6 +18,7 @@ let g:user_emmet_mode='a' " enable emmet in all modes
 let g:user_emmet_expandabbr_key='<c-space>'
 " ____________________________________________________________________________________________________________________ NETRW
 let g:netrw_banner=0
+let g:netrw_cursor = 0
 let g:netrw_winsize=13
 let g:netrw_liststyle=3
 let g:netrw_localrmdir='rm -r'
@@ -57,9 +58,6 @@ set splitbelow splitright
 " ____________________________________________________________________________________________________________________ SHORTCUTS
 map <space> <leader>
 nnoremap r <c-r>
-
-" use system clipboard
-set clipboard=unnamedplus
 
 " do not break v-mode when indenting
 vnoremap > >gv

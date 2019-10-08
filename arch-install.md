@@ -46,7 +46,7 @@ vim /etc/pacman.d/mirrorlist
 # install the base packages
 pacstrap /mnt base base-devel neovim
 
-# generate fstab file `automate mounting`
+# generate fstab file (auto mounting)
 genfstab -U /mnt >> /mnt/etc/fstab
 # check the resulting file
 nvim /mnt/etc/fstab
@@ -108,29 +108,28 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 # install necessary packages
 pacman -Syyu
-i3 i3status
 dialog
 wpa_supplicant
 network-manager-applet
 pulseaudio
 alsa-utils
 volumeicon
-alacritty
 chromium
 curl
 feh
 gcolor2
 intel-ucode
+alacritty
 kitty
 linux-headers
 vifm
 vlc
-xclip
 # vital for .xinitrc
 libinput
 xorg-server
 xorg-xinit
 xorg-setxkbmap
+hsetroot
 unclutter
 
 # clone archlinux repo
@@ -145,6 +144,7 @@ cd yay
 makepkg -si
 
 # install packages from yay
+i3-gaps-rounded-git
 gotop-git
 compton-tryone-git
 
@@ -156,8 +156,6 @@ umount -R /mnt
 
 # reboot | remove usb
 reboot
-
-# after reboot
 
 # if wifi-menu fucks up
 wifi-menu -o wlp3s0

@@ -124,6 +124,10 @@ kitty
 linux-headers
 vifm
 vlc
+xclip
+zip
+unzip
+tar
 # vital for .xinitrc
 libinput
 xorg-server

@@ -26,6 +26,9 @@ let g:netrw_localrmdir='rm -r'
 " toggle netrw on the left side of the editor
 nnoremap <leader>n :Lexplore<CR>
 " ____________________________________________________________________________________________________________________ NICE TO HAVE
+set virtualedit=all
+set laststatus=0 " disable statusline
+let &statusline='%#Normal#' " disable statusline when having more than one horizontal splits
 set noerrorbells " disable error bells
 set omnifunc=syntaxcomplete#Complete " css autocomplete.
 set nu rnu
@@ -37,6 +40,7 @@ set tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
 set shortmess+=s " avoid 'search hit BOTTOM'
 set updatetime=100
 set path+=** " when looking for a file search through every subdirectory
+set path+=.config/**
 set wildmode=longest,list,full " enable autocompletion.
 set smartcase " Automatically switch search to case-sensitive when search query contains an uppercase letter.
 set ignorecase " Ignore case when highlighting.
@@ -58,6 +62,9 @@ set splitbelow splitright
 " ____________________________________________________________________________________________________________________ SHORTCUTS
 map <space> <leader>
 nnoremap r <c-r>
+
+" use system clipboard
+set clipboard+=unnamedplus
 
 " do not break v-mode when indenting
 vnoremap > >gv
@@ -83,7 +90,7 @@ nmap <leader>w :w!<cr>
 nmap <leader>q :q<cr>
 nmap <leader>W :W<cr>
 nmap <leader>Q :q!<cr>
-nmap <leader>xx :wq!<cr>
+nmap <leader>x :wq!<cr>
 nmap <leader>aw :wa!<cr>
 nmap <leader>aq :qa!<cr>
 
@@ -97,13 +104,6 @@ au TabLeave * let g:lasttab = tabpagenr()
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
 map <silent> <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
-" ______________________________________________________________________________________________________________________ BUFFERS
-" go to the next/prev buffer in the buffer list
-" map <silent> <leader>n :bnext<cr>
-map <silent> <leader>N :bprevious<cr>
-
-" Close the current buffer
-map <silent> <leader>bd :bdelete<cr>:tabclose<cr>gT
 " _______________________________________________________________________________________________________________________ WINDOWS
 nnoremap <A-s> :new<cr>
 nnoremap <A-v> :vnew<cr>

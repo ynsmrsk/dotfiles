@@ -8,6 +8,10 @@ g+c-g = gives comprehensive info about current file (try in visual mode)
 ls *jpg | wc -l
 ------------------------------------------------------------- MISC ----------------------------------------------------------
 gf = open file under the cursor
+q: = open a buffer that contains commands which has been done in current session
+q/ = same with "q:" but this time it contains searches
+	lines in both these buffers has edit and enter functionality and edited lines has not been changed
+	the new command will be added to the bottom of the list
 ------------------------------------------------------------- MOVE AROUND ----------------------------------------------------------
 ^ = Jump to start of line (until whitespace)
 - = move up via indent

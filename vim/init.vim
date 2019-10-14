@@ -26,12 +26,12 @@ let g:netrw_localrmdir='rm -r'
 " toggle netrw on the left side of the editor
 nnoremap <leader>n :Lexplore<CR>
 " ____________________________________________________________________________________________________________________ NICE TO HAVE
-set virtualedit=all
+set noruler " do not show the line and column number of the cursor position
 set laststatus=0 " disable statusline
 let &statusline='%#Normal#' " disable statusline when having more than one horizontal splits
 set noerrorbells " disable error bells
 set omnifunc=syntaxcomplete#Complete " css autocomplete.
-set nu rnu
+set number relativenumber
 set nowrap " do not break lines.
 set showmatch " show matching brackets, jump with %
 set hidden " Hide buffers in the background instead of closing them.
@@ -97,10 +97,6 @@ nmap <leader>aq :qa!<cr>
 " :W sudo saves the file (useful for handling the permission-denied error)
 :command! W w !sudo tee % > /dev/null
 " ________________________________________________________________________________________________________________________ TABS
-let g:lasttab = 1 " Let 'tl' toggle between this and the last accessed tab
-nmap <silent> <Leader>tl :exe "tabn ".g:lasttab<CR>
-au TabLeave * let g:lasttab = tabpagenr()
-
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
 map <silent> <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/

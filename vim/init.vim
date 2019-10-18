@@ -26,12 +26,12 @@ let g:netrw_localrmdir='rm -r'
 " toggle netrw on the left side of the editor
 nnoremap <leader>n :Lexplore<CR>
 " ____________________________________________________________________________________________________________________ NICE TO HAVE
+set number relativenumber
 set noruler " do not show the line and column number of the cursor position
 set laststatus=0 " disable statusline
 let &statusline='%#Normal#' " disable statusline when having more than one horizontal splits
 set noerrorbells " disable error bells
 set omnifunc=syntaxcomplete#Complete " css autocomplete.
-set number relativenumber
 set nowrap " do not break lines.
 set showmatch " show matching brackets, jump with %
 set hidden " Hide buffers in the background instead of closing them.
@@ -101,9 +101,6 @@ nmap <leader>aq :qa!<cr>
 " Super useful when editing files in the same directory
 map <silent> <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 " _______________________________________________________________________________________________________________________ WINDOWS
-nnoremap <A-s> :new<cr>
-nnoremap <A-v> :vnew<cr>
-
 " easier resizing windows
 nnoremap <A-+> <C-W>+
 nnoremap <A--> <C-W>-

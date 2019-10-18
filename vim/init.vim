@@ -23,39 +23,39 @@ let g:netrw_winsize=13
 let g:netrw_liststyle=3
 let g:netrw_localrmdir='rm -r'
 
-" toggle netrw on the left side of the editor
+" Toggle netrw on the left side of the editor
 nnoremap <leader>n :Lexplore<CR>
 " ____________________________________________________________________________________________________________________ NICE TO HAVE
-set number relativenumber
-set noruler " do not show the line and column number of the cursor position
-set laststatus=0 " disable statusline
-let &statusline='%#Normal#' " disable statusline when having more than one horizontal splits
-set noerrorbells " disable error bells
-set omnifunc=syntaxcomplete#Complete " css autocomplete.
-set nowrap " do not break lines.
-set showmatch " show matching brackets, jump with %
+set nu rnu
+set confirm " Instead of failing a command because of unsaved changes, instead raise a dialogue asking if you wish to save changed files.
+set noruler " Do not show the line and column number of the cursor position.
+set laststatus=0 " Disable statusline.
+let &statusline='%#Normal#' " Disable statusline when having more than one horizontal splits.
+set noerrorbells " Disable error bells.
+set omnifunc=syntaxcomplete#Complete " Css autocomplete.
+set nowrap " Do not break lines.
+set showmatch " Show matching brackets, jump with %.
 set hidden " Hide buffers in the background instead of closing them.
-set mouse=a " enable mouse for clicking, scrolling and resizing
+set mouse=a " Enable mouse for clicking, scrolling and resizing.
 set tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
-set shortmess+=s " avoid 'search hit BOTTOM'
+set shortmess+=s " Avoid 'search hit BOTTOM'.
 set updatetime=100
-set path+=** " when looking for a file search through every subdirectory
-set path+=.config/**
-set wildmode=longest,list,full " enable autocompletion.
+set path+=** " When looking for a file search through every subdirectory.
+set path+=.config/** " ensure find, vs, sp etc. does see hidden folders and files.
+set wildmode=longest,list,full " Enable other completion modes.
 set smartcase " Automatically switch search to case-sensitive when search query contains an uppercase letter.
 set ignorecase " Ignore case when highlighting.
-set inccommand=nosplit " shows the effects of a command as you type
-set lazyredraw " Do not update screen during macro and script execution. (for performance)
+set inccommand=nosplit " shows the effects of a command as you type.
+set lazyredraw " Do not update screen during macro and script execution. (for performance).
 set scrolloff=0 " The number of screen lines to keep above and below the cursor.
 set sidescrolloff=0 " The number of screen columns to keep to the left and right of the cursor.
-set viminfo="NONE"
-set nobackup
-set nowritebackup
-set noswapfile
-set undofile " Maintain undo history between sessions
+set shadafile="NONE" " Do not write shada(.viminfo) files.
+set nobackup nowritebackup noswapfile " Commands explain themselves.
+set undofile " Make and 'undofile' under 'undodir' and maintain undo history between sessions.
+
 " Set end of buffer and vertsplit to empty
-set fillchars+=eob:\ ,
-set fillchars+=vert:\ ,
+set fillchars=eob:\ ,vert:\ ,
+
 " Set list characters
 set list listchars=tab:┊\ , "trail:›,extends:#,nbsp:→,space:•¬·
 set splitbelow splitright

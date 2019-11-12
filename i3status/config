@@ -38,5 +38,5 @@ format_down = "∅ eth0  "
 }
 
 battery 0 {
-	format = "%status %percentage                                                                                                                                             "
+	format = "%status %percentage                                                                                                           "
 }

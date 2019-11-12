@@ -28,16 +28,13 @@ nnoremap <leader>n :Lexplore<CR>
 " ____________________________________________________________________________________________________________________ NICE TO HAVE
 set nu rnu
 set confirm " Instead of failing a command because of unsaved changes, instead raise a dialogue asking if you wish to save changed files.
-set noruler " Do not show the line and column number of the cursor position.
 set laststatus=0 " Disable statusline.
 let &statusline='%#Normal#' " Disable statusline when having more than one horizontal splits.
-set noerrorbells " Disable error bells.
 set omnifunc=syntaxcomplete#Complete " Css autocomplete.
-set nowrap " Do not break lines.
 set showmatch " Show matching brackets, jump with %.
 set hidden " Hide buffers in the background instead of closing them.
 set mouse=a " Enable mouse for clicking, scrolling and resizing.
-set tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
+set tabstop=2 softtabstop=2 shiftwidth=2
 set shortmess+=s " Avoid 'search hit BOTTOM'.
 set updatetime=100
 set path+=** " When looking for a file search through every subdirectory.
@@ -49,22 +46,21 @@ set inccommand=nosplit " shows the effects of a command as you type.
 set lazyredraw " Do not update screen during macro and script execution. (for performance).
 set scrolloff=0 " The number of screen lines to keep above and below the cursor.
 set sidescrolloff=0 " The number of screen columns to keep to the left and right of the cursor.
-set shadafile="NONE" " Do not write shada(.viminfo) files.
-set nobackup nowritebackup noswapfile " Commands explain themselves.
 set undofile " Make and 'undofile' under 'undodir' and maintain undo history between sessions.
-
-" Set end of buffer and vertsplit to empty
-set fillchars=eob:\ ,vert:\ ,
-
-" Set list characters
 set list listchars=tab:┊\ , "trail:›,extends:#,nbsp:→,space:•¬·
 set splitbelow splitright
+set clipboard+=unnamedplus " use system clipboard
+" ____________________________________________________________________________________________________________________ DISABLE STUFF
+set noruler " Do not show the line and column number of the cursor position.
+set nobackup nowritebackup noswapfile
+set shadafile="NONE" " Do not write shada(.viminfo) files.
+set fillchars=eob:\ ,vert:\ , " Set end of buffer and vertsplit to empty
+set noerrorbells " Disable error bells.
+set nowrap " Do not break lines.
 " ____________________________________________________________________________________________________________________ SHORTCUTS
 map <space> <leader>
 nnoremap r <c-r>
-
-" use system clipboard
-set clipboard+=unnamedplus
+map Y y$
 
 " do not break v-mode when indenting
 vnoremap > >gv
@@ -84,7 +80,7 @@ vnoremap / y/<C-R>"<C-R>
 nnoremap <silent> <leader>/ :set hlsearch!<CR>
 
 " spell-check for English
-nnoremap <leader>c :setlocal spell! spelllang=en_us<CR>
+nnoremap <silent> <leader>c :setlocal spell! spelllang=en_us<CR>
 " ____________________________________________________________________________________________________________________ WRITE | QUIT
 nmap <leader>w :w!<cr>
 nmap <leader>q :q<cr>
@@ -94,7 +90,7 @@ nmap <leader>x :wq!<cr>
 nmap <leader>aw :wa!<cr>
 nmap <leader>aq :qa!<cr>
 
-" :W sudo saves the file (useful for handling the permission-denied error)
+" sudo saves the file
 :command! W w !sudo tee % > /dev/null
 " ________________________________________________________________________________________________________________________ TABS
 " Opens a new tab with the current buffer's path

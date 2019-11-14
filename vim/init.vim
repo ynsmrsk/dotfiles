@@ -24,7 +24,7 @@ let g:netrw_liststyle=3
 let g:netrw_localrmdir='rm -r'
 
 " Toggle netrw on the left side of the editor
-nnoremap <leader>n :Lexplore<CR>
+nnoremap <silent> <leader>n :Lexplore<CR>
 " ____________________________________________________________________________________________________________________ NICE TO HAVE
 set nu rnu
 set confirm " Instead of failing a command because of unsaved changes, instead raise a dialogue asking if you wish to save changed files.

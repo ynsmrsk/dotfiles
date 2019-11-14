@@ -1,6 +1,6 @@
 set $mod Mod4
 
-border_radius 10
+border_radius 0
 
 # font
 font pango:Quicksand 10
@@ -9,8 +9,8 @@ font pango:Quicksand 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec kitty
-bindsym $mod+Ctrl+Return exec alacritty
+bindsym $mod+Return exec alacritty
+bindsym $mod+Ctrl+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -129,12 +129,12 @@ bindsym $mod+d exec dmenu_run
 bindsym $mod+Ctrl+v exec vlc
 bindsym $mod+Ctrl+e exec chromium
 bindsym $mod+Ctrl+g exec gcolor2
-bindsym $mod+Ctrl+n exec kitty -e nvim
-bindsym $mod+Ctrl+o exec kitty -e vifm
-bindsym $mod+Ctrl+a exec kitty -e 'alsamixer'
+bindsym $mod+Ctrl+n exec alacritty -e nvim
+bindsym $mod+Ctrl+o exec alacritty -e vifm
+bindsym $mod+Ctrl+a exec alacritty -e 'alsamixer'
 bindsym $mod+Shift+c exec --no-startup-id pkill compton
 bindsym $mod+Ctrl+c exec --no-startup-id compton -b
-bindsym $mod+g exec --no-startup-id kitty -e gotop
+bindsym $mod+g exec --no-startup-id alacritty -e gotop
 
 # start programs on specific ws when i3 starts
 
@@ -172,12 +172,12 @@ colors {
 	statusline #437480
 	separator  #0D0F18
 
-#					border	backgr.	text
-focused_workspace	#0D0F18 #0D0F18 #99D1CE
-active_workspace	#0D0F18 #0D0F18 #99D1CE
+#										border	backgr.	text
+focused_workspace		#0D0F18 #0D0F18 #99D1CE
+active_workspace		#0D0F18 #0D0F18 #99D1CE
 inactive_workspace	#0D0F18 #0D0F18 #434a55
-focused_workspace	#0D0F18 #0D0F18 #99D1CE
-urgent_workspace    #0D0F18 #0D0F18 #dd293b
+focused_workspace		#0D0F18 #0D0F18 #99D1CE
+urgent_workspace		#0D0F18 #0D0F18 #dd293b
 	}
 }
 
@@ -189,14 +189,14 @@ bindsym $mod+m bar mode toggle
 
 exec --no-startup-id volumeicon
 exec --no-startup-id i3-msg 'exec /usr/bin/pulseaudio --start'
-exec_always --no-startup-id feh --bg-scale ~/Pictures/arch.jpeg
+exec_always --no-startup-id feh --bg-scale ~/Pictures/arch.jpg
 exec --no-startup-id nm-applet
 exec --no-startup-id compton -b
 
-# gaps only be used if there is more than one container on the workspace
+# gaps only more than 1 window
 # smart_gaps on
-gaps inner 10
-gaps outer 10
+gaps inner 15
+gaps outer 5
 bindsym $mod+i gaps inner current plus 5
 bindsym $mod+o gaps inner current minus 5
 

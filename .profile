@@ -16,8 +16,3 @@ if [[ -z "$DISPLAY"  ]] && [[ $(tty) = /dev/tty1  ]]; then
  . startx
   logout
 fi
-
-export EDITOR="nvim"
-export FILE="vifm"
-export BROWSER="chromium"
-export TERMINAL="kitty"

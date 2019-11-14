@@ -18,3 +18,8 @@ fi
 bind -m vi-insert "\C-l":clear-screen
 
 shopt -s autocd
+
+export EDITOR="nvim"
+export FILE="vifm"
+export BROWSER="chromium"
+export TERMINAL="alacritty"

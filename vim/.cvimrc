@@ -10,10 +10,10 @@ map s previousTab
 map d nextTab
 map <Leader>s :settings<CR>
 map <Leader>t :tabnew<Space>duckduckgo<Space>
-map <Leader>yy :tabnew<Space>youtube<Space><CR>
-map <Leader>yW :tabnew<Space>https://www.youtube.com/playlist?list=PLR07LzxpzLzilamSsBG0_jQzMHB804c5G<Space><CR>
-map <Leader>yw :tabnew<Space>https://www.youtube.com/playlist?list=WL<Space><CR>
-map <Leader>yl :tabnew<Space>https://www.youtube.com/playlist?list=PLR07LzxpzLzjNKwVUuHhQRbB-Oi0y_yry<Space><CR>
-map <Leader>yd :tabnew<Space>https://www.youtube.com/playlist?list=PLR07LzxpzLziHuLEv_EfuwTTk-M8bD47R<Space><CR>
-map <Leader>r :tabnew<Space>duckduckgo<Space>reddit.com<Space><CR>
-map <Leader>g :tabnew<Space>duckduckgo<Space>github.com<Space><CR>
+map <Leader>yy :tabnew<Space>youtube<CR>
+map <Leader>yW :tabnew<Space>https://www.youtube.com/playlist?list=PLR07LzxpzLzilamSsBG0_jQzMHB804c5G<CR>
+map <Leader>yw :tabnew<Space>https://www.youtube.com/playlist?list=WL<CR>
+map <Leader>yl :tabnew<Space>https://www.youtube.com/playlist?list=PLR07LzxpzLzjNKwVUuHhQRbB-Oi0y_yry<CR>
+map <Leader>yd :tabnew<Space>https://www.youtube.com/playlist?list=PLR07LzxpzLziHuLEv_EfuwTTk-M8bD47R<CR>
+map <Leader>r :tabnew<Space>reddit.com<CR>
+map <Leader>g :tabnew<Space>github.com<CR>

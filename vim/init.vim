@@ -8,11 +8,12 @@ Plug 'tpope/vim-commentary'
 Plug 'pangloss/vim-javascript'
 call plug#end()
 " ____________________________________________________________________________________________________________________ COLORSCHEME
+color srcery
 set t_Co=256
 set termguicolors
+hi Normal guibg=#0A1217
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
-color srcery
 " ____________________________________________________________________________________________________________________ EMMET
 let g:user_emmet_mode='a' " enable emmet in all modes
 let g:user_emmet_expandabbr_key='<c-space>'

@@ -8,8 +8,8 @@
 PS1='[\u@\h \W]\$ '
 
 # Alias definitions.
-if [ -f ~/.config/.bash_aliases ]; then
-    . ~/.config/.bash_aliases
+if [ -f ~/.config/bash_aliases/.bash_aliases ]; then
+    . ~/.config/bash_aliases/.bash_aliases
 fi
 
 # enable vi mode

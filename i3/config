@@ -189,14 +189,14 @@ bindsym $mod+m bar mode toggle
 
 exec --no-startup-id volumeicon
 exec --no-startup-id i3-msg 'exec /usr/bin/pulseaudio --start'
-exec_always --no-startup-id feh --bg-scale ~/Pictures/arch.jpg
+exec_always --no-startup-id feh --bg-scale ~/Pictures/mojave-day.jpg
 exec --no-startup-id nm-applet
 exec --no-startup-id compton -b
 
 # gaps only more than 1 window
 # smart_gaps on
-gaps inner 15
-gaps outer 5
+gaps inner 0
+gaps outer 0
 bindsym $mod+i gaps inner current plus 5
 bindsym $mod+o gaps inner current minus 5
 

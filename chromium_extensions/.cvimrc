@@ -1,4 +1,4 @@
-let barposition = "bottom"
+
 set nosmoothscroll
 set noautofocus
 let mapleader = ";"
@@ -8,9 +8,7 @@ map H scrollLeft
 map L scrollRight
 map s previousTab
 map d nextTab
-map <Leader>s :settings<CR>
-map <Leader>t :tabnew<Space>duckduckgo<Space>
-map <Leader>yy :tabnew<Space>youtube<CR>
+map yt :tabnew<Space>youtube<Space>
 map <Leader>yW :tabnew<Space>https://www.youtube.com/playlist?list=PLR07LzxpzLzilamSsBG0_jQzMHB804c5G<CR>
 map <Leader>yw :tabnew<Space>https://www.youtube.com/playlist?list=WL<CR>
 map <Leader>yl :tabnew<Space>https://www.youtube.com/playlist?list=PLR07LzxpzLzjNKwVUuHhQRbB-Oi0y_yry<CR>

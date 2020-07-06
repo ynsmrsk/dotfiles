@@ -6,6 +6,9 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'pangloss/vim-javascript'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 " ____________________________________________________________________________________________________________________ COLORSCHEME
 color srcery
@@ -26,11 +29,11 @@ let g:netrw_localrmdir='rm -r'
 
 " Toggle netrw on the left side of the editor
 nnoremap <silent> <leader>n :Lexplore<CR>
-" ____________________________________________________________________________________________________________________ NICE TO HAVE
+" ____________________________________________________________________________________________________________________ MISC
 set nu rnu
 set confirm " Instead of failing a command because of unsaved changes, instead raise a dialogue asking if you wish to save changed files.
-set laststatus=0 " Disable statusline.
-let &statusline='%#Normal#' " Disable statusline when having more than one horizontal splits.
+"set laststatus=0 " Disable statusline.
+"let &statusline='%#Normal#' " Disable statusline when having more than one horizontal splits.
 set omnifunc=syntaxcomplete#Complete " Css autocomplete.
 set showmatch " Show matching brackets, jump with %.
 set hidden " Hide buffers in the background instead of closing them.
@@ -82,7 +85,7 @@ nnoremap <silent> <leader>/ :set hlsearch!<CR>
 
 " spell-check for English
 nnoremap <silent> <leader>c :setlocal spell! spelllang=en_us<CR>
-" ____________________________________________________________________________________________________________________ WRITE | QUIT
+" ___________________________________________________________________________________________________________________ WRITE | QUIT
 nmap <leader>w :w!<cr>
 nmap <leader>q :q<cr>
 nmap <leader>W :W<cr>
@@ -158,4 +161,38 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 " ____________________________________________________________________________________________________________________ SOME TRICKS
 au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o " disable auto comment
 au BufWritePre * %s/\s\+$//e " auto delete trailing whitespace on save
-au BufEnter * if &ft ==# 'help' | wincmd L | endif " open help pages in vertical split
+au BufEnter * if &ft ==# 'help' | wincmd L | endif " open help pages in vertical split_
+" _____________________________________________________________________________________________________________________ NEW
+map <C-f> :Files!<CR>
+inoremap <C-f> <Esc>:BLines!<CR>
+
+"make vim's current directory track netrw's browsing directory
+"let g:netrw_keepdir=0
+" make current directory netrw's browsing directory always
+"set autochdir
+
+autocmd FileType netrw setl bufhidden=delete
+
+set wildmenu
+set wildignore+=**/node_modules/**
+
+
+"set statusline+=%=      " hide file name in statusline
+"set fillchars=stl:-     " fill active window's statusline with -
+"set fillchars+=stlnc:-  " also fill inactive windows
+"set fillchars+=vert:\|  " add a bar for vertical splits
+
+"set title
+
+hi StatusLine   guifg=#60A5A9  guibg=#070E13 gui=none
+hi StatusLineNC guifg=#648688 guibg=#070E13  gui=none
+
+set cursorline
+hi Cursorline guibg=#070E13
+hi CursorlineNR guibg=#070E13
+
+hi VertSplit guibg=#070E13 gui=bold
+
+"hi ActiveWindow guibg=#0A1217
+"hi InactiveWindow guibg=#070E13
+"set winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow

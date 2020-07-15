@@ -17,33 +17,56 @@ set termguicolors
 hi Normal guibg=#0A1217
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
+" ____________________________________________________________________________________________________________________ HIGHLIGHT GROUPS
+"hi ActiveWindow guibg=#0A1217
+"hi InactiveWindow guibg=#070E13
+"set winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
+hi VertSplit guibg=#070E13 gui=bold
+hi StatusLine   guifg=#60A5A9  guibg=#070E13 gui=none
+hi StatusLineNC guifg=#648688 guibg=#070E13  gui=none
+hi Cursorline guibg=#070E13
+hi CursorlineNR guibg=#070E13
 " ____________________________________________________________________________________________________________________ EMMET
 let g:user_emmet_mode='a' " enable emmet in all modes
 let g:user_emmet_expandabbr_key='<c-space>'
+" ____________________________________________________________________________________________________________________ FZF.VIM
+map <C-f> :Files!<CR>
+inoremap <C-f> <Esc>:BLines!<CR>
 " ____________________________________________________________________________________________________________________ NETRW
 let g:netrw_banner=0
 let g:netrw_cursor = 0
-let g:netrw_winsize=13
+let g:netrw_winsize=20
 let g:netrw_liststyle=3
 let g:netrw_localrmdir='rm -r'
 
 " Toggle netrw on the left side of the editor
 nnoremap <silent> <leader>n :Lexplore<CR>
+
+"make vim's current directory track netrw's browsing directory
+"let g:netrw_keepdir=0
+set autochdir
+
+autocmd FileType netrw setl bufhidden=delete
 " ____________________________________________________________________________________________________________________ MISC
-set nu rnu
+"set title
+set cursorline
+set number relativenumber
 set confirm " Instead of failing a command because of unsaved changes, instead raise a dialogue asking if you wish to save changed files.
-"set laststatus=0 " Disable statusline.
-"let &statusline='%#Normal#' " Disable statusline when having more than one horizontal splits.
 set omnifunc=syntaxcomplete#Complete " Css autocomplete.
 set showmatch " Show matching brackets, jump with %.
 set hidden " Hide buffers in the background instead of closing them.
 set mouse=a " Enable mouse for clicking, scrolling and resizing.
 set tabstop=2 softtabstop=2 shiftwidth=2
-set shortmess+=s " Avoid 'search hit BOTTOM'.
+"set list listchars=tab:┊\ , "trail:›,extends:#,nbsp:→,space:•¬·
+set shortmess+=s " Avoid 'search hit BOTTOM, continuing at TOP' message.
 set updatetime=100
+
 set path+=** " When looking for a file search through every subdirectory.
 set path+=.config/** " ensure find, vs, sp etc. does see hidden folders and files.
 set wildmode=longest,list,full " Enable other completion modes.
+set wildmenu
+set wildignore+=**/node_modules/**
+
 set smartcase " Automatically switch search to case-sensitive when search query contains an uppercase letter.
 set ignorecase " Ignore case when highlighting.
 set inccommand=nosplit " shows the effects of a command as you type.
@@ -51,7 +74,6 @@ set lazyredraw " Do not update screen during macro and script execution. (for pe
 set scrolloff=0 " The number of screen lines to keep above and below the cursor.
 set sidescrolloff=0 " The number of screen columns to keep to the left and right of the cursor.
 set undofile " Make and 'undofile' under 'undodir' and maintain undo history between sessions.
-set list listchars=tab:┊\ , "trail:›,extends:#,nbsp:→,space:•¬·
 set splitbelow splitright
 set clipboard+=unnamedplus " use system clipboard
 " ____________________________________________________________________________________________________________________ DISABLE STUFF
@@ -61,6 +83,14 @@ set shadafile="NONE" " Do not write shada(.viminfo) files.
 set fillchars=eob:\ ,vert:\ , " Set end of buffer and vertsplit to empty
 set noerrorbells " Disable error bells.
 set nowrap " Do not break lines.
+" ____________________________________________________________________________________________________________________ STATUSLINE
+"set laststatus=0 " Disable statusline.
+"let &statusline='%#Normal#' " Disable statusline when having more than one horizontal splits.
+
+"set statusline+=%=      " hide file name in statusline
+"set fillchars=stl:-     " fill active window's statusline with -
+"set fillchars+=stlnc:-  " also fill inactive windows
+"set fillchars+=vert:\|  " add a bar for vertical splits
 " ____________________________________________________________________________________________________________________ SHORTCUTS
 map <space> <leader>
 nnoremap r <c-r>
@@ -85,7 +115,7 @@ nnoremap <silent> <leader>/ :set hlsearch!<CR>
 
 " spell-check for English
 nnoremap <silent> <leader>c :setlocal spell! spelllang=en_us<CR>
-" ___________________________________________________________________________________________________________________ WRITE | QUIT
+" ____________________________________________________________________________________________________________________ WRITE | QUIT
 nmap <leader>w :w!<cr>
 nmap <leader>q :q<cr>
 nmap <leader>W :W<cr>
@@ -96,12 +126,11 @@ nmap <leader>aq :qa!<cr>
 
 " sudo saves the file
 :command! W w !sudo tee % > /dev/null
-" ________________________________________________________________________________________________________________________ TABS
-" Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
-map <silent> <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
-" _______________________________________________________________________________________________________________________ WINDOWS
-" easier resizing windows
+" ____________________________________________________________________________________________________________________ BUFFERS
+nnoremap <C-h> :bprevious<CR>
+nnoremap <C-l> :bnext<CR>
+" ____________________________________________________________________________________________________________________ WINDOWS
+" window resizing
 nnoremap <A-+> <C-W>+
 nnoremap <A--> <C-W>-
 nnoremap <A-<> <C-W><
@@ -109,11 +138,7 @@ nnoremap <A->> <C-W>>
 nnoremap <A-=> <C-W>=
 nnoremap <A-o> <C-W>o
 
-" rotate window
-nnoremap <A-r> <C-W>r
-" exchange with side window
-nnoremap <A-x> <C-W>x
-" _______________________________________________________________________________________________________________________ WINDOW NAV
+" window navigation
 nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
@@ -134,19 +159,16 @@ tnoremap <A-J> <C-\><C-N><C-w>Ja
 tnoremap <A-K> <C-\><C-N><C-w>Ka
 tnoremap <A-L> <C-\><C-N><C-w>La
 
-inoremap <A-h> <C-\><C-N><C-w>h
-inoremap <A-j> <C-\><C-N><C-w>j
-inoremap <A-k> <C-\><C-N><C-w>k
-inoremap <A-l> <C-\><C-N><C-w>l
-
-inoremap <A-H> <C-\><C-N><C-w>Ha
-inoremap <A-J> <C-\><C-N><C-w>Ja
-inoremap <A-K> <C-\><C-N><C-w>Ka
-inoremap <A-L> <C-\><C-N><C-w>La
-" ______________________________________________________________________________________________________________________ TERMINAL
+" rotate window
+nnoremap <A-r> <C-W>r
+tnoremap <A-r> <C-\><C-N><C-w>r
+" exchange with side window
+nnoremap <A-x> <C-W>x
+tnoremap <A-x> <C-\><C-N><C-w>x
+" ____________________________________________________________________________________________________________________ TERMINAL
 au TermOpen * startinsert " Start terminal in insert mode
 " auto enter insert mode when coming from other windows
-au BufWinEnter,WinEnter * if &buftype == 'terminal' | silent! normal i | endif
+" au BufWinEnter,WinEnter * if &buftype == 'terminal' | silent! normal i | endif
 
 nnoremap <silent> <A-T> :vnew<CR>:terminal<CR>
 nnoremap <silent> <A-t> :10new<CR>:terminal<CR>
@@ -162,37 +184,5 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o " disable auto comment
 au BufWritePre * %s/\s\+$//e " auto delete trailing whitespace on save
 au BufEnter * if &ft ==# 'help' | wincmd L | endif " open help pages in vertical split_
-" _____________________________________________________________________________________________________________________ NEW
-map <C-f> :Files!<CR>
-inoremap <C-f> <Esc>:BLines!<CR>
 
-"make vim's current directory track netrw's browsing directory
-"let g:netrw_keepdir=0
-" make current directory netrw's browsing directory always
-"set autochdir
-
-autocmd FileType netrw setl bufhidden=delete
-
-set wildmenu
-set wildignore+=**/node_modules/**
-
-
-"set statusline+=%=      " hide file name in statusline
-"set fillchars=stl:-     " fill active window's statusline with -
-"set fillchars+=stlnc:-  " also fill inactive windows
-"set fillchars+=vert:\|  " add a bar for vertical splits
-
-"set title
-
-hi StatusLine   guifg=#60A5A9  guibg=#070E13 gui=none
-hi StatusLineNC guifg=#648688 guibg=#070E13  gui=none
-
-set cursorline
-hi Cursorline guibg=#070E13
-hi CursorlineNR guibg=#070E13
-
-hi VertSplit guibg=#070E13 gui=bold
-
-"hi ActiveWindow guibg=#0A1217
-"hi InactiveWindow guibg=#070E13
-"set winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
+"set guicursor=

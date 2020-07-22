@@ -152,3 +152,5 @@ au TermOpen * startinsert " Start terminal in insert mode
 nnoremap <silent> <A-T> :vnew<CR>:terminal<CR>
 nnoremap <silent> <A-t> :10new<CR>:terminal<CR>
 tnoremap <Esc> <C-\><C-n>
+
+map <leader>d :bp<bar>sp<bar>bn<bar>bd<CR>

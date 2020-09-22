@@ -7,22 +7,20 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 call plug#end()
 " ____________________________________________________________________________________________________________________ COLORSCHEME
 color srcery
 set t_Co=256
 set termguicolors
-hi Normal guibg=#0A1217
+hi Normal guibg=#000000
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
 " ____________________________________________________________________________________________________________________ HIGHLIGHT GROUPS
-hi VertSplit guibg=#070E13 gui=bold
-hi StatusLine   guifg=#60A5A9  guibg=#070E13 gui=none
-hi StatusLineNC guifg=#648688 guibg=#070E13  gui=none
-hi Cursorline guibg=#070E13
-hi CursorlineNR guibg=#070E13
+hi VertSplit guibg=#080808 gui=bold
+hi StatusLine   guifg=#60A5A9  guibg=#080808 gui=none
+hi StatusLineNC guifg=#648688 guibg=#080808  gui=none
+hi Cursorline guibg=#080808
+hi CursorlineNR guibg=#000000
 " ____________________________________________________________________________________________________________________ EMMET
 let g:user_emmet_expandabbr_key='<c-space>'
 " ____________________________________________________________________________________________________________________ FZF.VIM
@@ -30,20 +28,13 @@ map <C-f> :Files!<CR>
 inoremap <C-f> <Esc>:BLines!<CR>
 " ____________________________________________________________________________________________________________________ NETRW
 let g:netrw_banner=0
-let g:netrw_cursor = 0
 let g:netrw_liststyle=3
+set autochdir
+autocmd FileType netrw setl bufhidden=wipe
+let g:netrw_list_hide= netrw_gitignore#Hide()
 
-" Toggle netrw on the left side of the editor
-nnoremap <silent> <leader>n :Explore<CR>
-
-" Keep current directory the same as the browsing directory
-let g:netrw_keepdir=0
-"set autochdir
- autocmd FileType netrw setl bufhidden=wipe
 " ____________________________________________________________________________________________________________________ MISC
 set title
-"set guicursor=
-set cursorline
 set number relativenumber
 set omnifunc=syntaxcomplete#Complete " Css auto complete.
 set hidden " Hide buffers in the background instead of closing them.
@@ -93,12 +84,6 @@ nmap <silent> <leader>v :e $MYVIMRC<CR>
 " Automatically source vimrc on save.
 autocmd! bufwritepost $MYVIMRC source $MYVIMRC
 
-" repeatable putting with taking help from "registers
-nnoremap <c-p> ciw<c-r>0<esc>
-
-" search term in select mode
-vnoremap / y/<C-R>"<C-R>
-
 " toggle highlight search
 nnoremap <silent> <leader>/ :set hlsearch!<CR>
 
@@ -110,6 +95,8 @@ nmap <leader>q :q<cr>
 " ____________________________________________________________________________________________________________________ BUFFERS
 nnoremap <silent> <C-j> :bprevious<CR>
 nnoremap <silent> <C-k> :bnext<CR>
+" don't close current window after deleting a buffer when multiple windows is open
+map <silent> <leader>d :bp<bar>sp<bar>bn<bar>bd<CR>
 " ____________________________________________________________________________________________________________________ WINDOWS
 " window resizing
 nnoremap <A-+> <C-W>+
@@ -152,5 +139,3 @@ au TermOpen * startinsert " Start terminal in insert mode
 nnoremap <silent> <A-T> :vnew<CR>:terminal<CR>
 nnoremap <silent> <A-t> :10new<CR>:terminal<CR>
 tnoremap <Esc> <C-\><C-n>
-
-map <leader>d :bp<bar>sp<bar>bn<bar>bd<CR>

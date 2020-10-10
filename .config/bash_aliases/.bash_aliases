@@ -12,13 +12,12 @@ alias free='free -m'  # show sizes in MB
 
 # comfy aliases
 alias v='nvim'
-alias vba='nvim ~/.config/.bash_aliases'
-alias cv='nvim ~/.config/cvim/.cvimrc'
+alias vba='nvim ~/.config/bash_aliases/.bash_aliases'
 alias vc='nvim ~/.config/picom/picom.conf'
 alias vk='nvim ~/.config/kitty/kitty.conf'
-alias vv='nvim ~/.config/nvim/init.vim'
-alias vi3='nvim ~/.config/i3/config'
-alias vis='nvim ~/.config/i3status/config'
 alias vp='nvim ~/.profile'
+alias vv='nvim ~/.config/nvim/init.vim'
 alias vx='nvim ~/.xinitrc'
 alias vb='nvim ~/.bashrc'
+alias vi3='nvim ~/.config/i3/config'
+alias vis='nvim ~/.config/i3status/config'

@@ -10,29 +10,35 @@ call plug#end()
 color srcery
 set t_Co=256
 set termguicolors
-hi Normal guibg=#000000
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
+
 " || HIGHLIGHT GROUPS
-hi VertSplit guibg=#080808 gui=bold
-hi StatusLine   guifg=#60A5A9  guibg=#080808 gui=none
-hi StatusLineNC guifg=#648688 guibg=#080808  gui=none
-hi Cursorline guibg=#080808
-hi CursorlineNR guibg=#000000
+hi Normal guibg=#0B0F12
+hi VertSplit guibg=#0d1114 gui=bold
+hi StatusLine   guifg=#A9D1CF  guibg=#0d1114 gui=none
+hi StatusLineNC guifg=#648688 guibg=#0d1114  gui=none
+hi Cursorline guibg=#0d1114
+hi CursorlineNR guibg=#0D1114
 
 " || EMMET
 let g:user_emmet_expandabbr_key='<c-space>'
 
 " || NETRW
-let g:netrw_banner=0
-let g:netrw_liststyle=3
 set autochdir
+let g:netrw_banner=0
+let g:netrw_keepdir=0
+let g:netrw_winsize=20
+let g:netrw_liststyle=3
 autocmd FileType netrw setl bufhidden=wipe
 let g:netrw_list_hide='node_modules,^\package-lock.json,^\.git,^\.next,^\.gitignore,^\README.md,^\yarn.lock'
-let g:netrw_keepdir=0
+nmap <silent> <leader>l :Lex <CR>
+nmap <silent> <leader>e :Ex  <CR>
+nmap <silent> <leader>r :Rex <CR>
 
 " || MISC
 set title
+set cursorline
 set number relativenumber
 set omnifunc=syntaxcomplete#Complete " Css auto complete.
 set hidden " Hide buffers in the background instead of closing them.
@@ -83,21 +89,21 @@ vnoremap < <gv
 autocmd! bufwritepost $MYVIMRC source $MYVIMRC
 
 " toggle highlight search
-nnoremap <silent> <leader>n :noh<CR>
+nnoremap <silent> <leader>n :noh <CR>
 
 " spell-check for English
-nnoremap <silent> <leader>c :setlocal spell! spelllang=en_us<CR>
+nnoremap <silent> <leader>c :setlocal spell! spelllang=en_us <CR>
 
 " || WRITE | QUIT
 nmap <silent> <leader>w :w!<cr>
 nmap <silent> <leader>q :q<cr>
 
 " || BUFFERS
-nnoremap gb :ls<CR> :b<space>
-nnoremap <silent> <C-j> :bprevious<CR>
-nnoremap <silent> <C-k> :bnext<CR>
+nnoremap gb :ls <CR> :b<space>
+nnoremap <silent> <C-j> :bprevious <CR>
+nnoremap <silent> <C-k> :bnext <CR>
 " don't close current window after deleting a buffer when multiple windows is open
-map <silent> <leader>d :bp<bar>sp<bar>bn<bar>bd<CR>
+map <silent> <leader>d :bp<bar>sp<bar>bn<bar>bd <CR>
 
 " || WINDOWS
 " window resizing
@@ -119,15 +125,15 @@ nnoremap <A-J> <C-w>J
 nnoremap <A-K> <C-w>K
 nnoremap <A-L> <C-w>L
 
-tnoremap <A-h> <C-\><C-N><C-w>h
-tnoremap <A-j> <C-\><C-N><C-w>j
-tnoremap <A-k> <C-\><C-N><C-w>k
-tnoremap <A-l> <C-\><C-N><C-w>l
+tnoremap <A-h> <C-\> <C-N> <C-w>h
+tnoremap <A-j> <C-\> <C-N> <C-w>j
+tnoremap <A-k> <C-\> <C-N> <C-w>k
+tnoremap <A-l> <C-\> <C-N> <C-w>l
 
-tnoremap <A-H> <C-\><C-N><C-w>Ha
-tnoremap <A-J> <C-\><C-N><C-w>Ja
-tnoremap <A-K> <C-\><C-N><C-w>Ka
-tnoremap <A-L> <C-\><C-N><C-w>La
+tnoremap <A-H> <C-\> <C-N> <C-w>Ha
+tnoremap <A-J> <C-\> <C-N> <C-w>Ja
+tnoremap <A-K> <C-\> <C-N> <C-w>Ka
+tnoremap <A-L> <C-\> <C-N> <C-w>La
 
 " rotate window
 nnoremap <A-r> <C-W>r
@@ -139,6 +145,6 @@ tnoremap <A-x> <C-\><C-N><C-w>x
 " || TERMINAL
 au TermOpen * startinsert " Start terminal in insert mode
 
-nnoremap <silent> <A-T> :vnew<CR>:terminal<CR>
-nnoremap <silent> <A-t> :10new<CR>:terminal<CR>
+nnoremap <silent> <A-T> :vnew  <CR>:terminal  <CR>
+nnoremap <silent> <A-t> :10new <CR>:terminal  <CR>
 tnoremap <Esc> <C-\><C-n>

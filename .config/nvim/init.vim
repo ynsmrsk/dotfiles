@@ -4,6 +4,7 @@ Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'airblade/vim-rooter'
 call plug#end()
 
 " || COLORSCHEME
@@ -24,17 +25,17 @@ hi CursorlineNR guibg=#0D1114
 " || EMMET
 let g:user_emmet_expandabbr_key='<c-space>'
 
+" || VIM-ROOTER
+let g:rooter_silent_chdir = 1
+
 " || NETRW
-set autochdir
 let g:netrw_banner=0
 let g:netrw_keepdir=0
-let g:netrw_winsize=20
 let g:netrw_liststyle=3
 autocmd FileType netrw setl bufhidden=wipe
-let g:netrw_list_hide='node_modules,^\package-lock.json,^\.git,^\.next,^\.gitignore,^\README.md,^\yarn.lock'
-nmap <silent> <leader>l :Lex <CR>
 nmap <silent> <leader>e :Ex  <CR>
 nmap <silent> <leader>r :Rex <CR>
+let g:netrw_list_hide='node_modules,^\package-lock.json,^\.git,^\.next,^\.gitignore,^\README.md,^\yarn.lock'
 
 " || MISC
 set title
@@ -47,11 +48,10 @@ set tabstop=2 softtabstop=2 shiftwidth=2
 set updatetime=100
 set undofile " Make and 'undofile' under 'undodir' and maintain undo history between sessions.
 
-set path+=** " When looking for a file search through every subdirectory.
-set path+=.config/** " ensure find, vs, sp etc. does see hidden folders and files.
-set wildmode=longest,list,full " Enable other completion modes.
 set wildmenu
-set wildignore+=**/node_modules/**
+set path+=$HOME/Documents/Projects/** " When looking for a file search through every subdirectory.
+set wildmode=longest,list,full " Enable other completion modes.
+set wildignore+=*/node_modules/*,*/.next/*,*/.git/*
 
 set smartcase " Automatically switch search to case-sensitive when search query contains an uppercase letter.
 set ignorecase " Ignore case when highlighting.
@@ -95,15 +95,14 @@ nnoremap <silent> <leader>n :noh <CR>
 nnoremap <silent> <leader>c :setlocal spell! spelllang=en_us <CR>
 
 " || WRITE | QUIT
-nmap <silent> <leader>w :w!<cr>
-nmap <silent> <leader>q :q<cr>
+nmap <silent> <leader>w :w! <CR>
+nmap <silent> <leader>q :q <CR>
 
 " || BUFFERS
-nnoremap gb :ls <CR> :b<space>
+nnoremap gb :b<space>
 nnoremap <silent> <C-j> :bprevious <CR>
 nnoremap <silent> <C-k> :bnext <CR>
-" don't close current window after deleting a buffer when multiple windows is open
-map <silent> <leader>d :bp<bar>sp<bar>bn<bar>bd <CR>
+map <silent> <leader>d :bp<bar>sp<bar>bn<bar>bw <CR>
 
 " || WINDOWS
 " window resizing
